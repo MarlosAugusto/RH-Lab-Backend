@@ -12,14 +12,13 @@ const pool = new Pool({
 });
 
 app.post("/test", async (req, res) => {
-  console.log('url',process.env.DATABASE_URL)
   let results;
   try {
     const client = await pool.connect()
     const result = await client.query('SELECT NOW();');
     results = { 'results': (result) ? result.rows : null};
     client.release();
-    return res.send("results: " + results);
+    return res.send("results: " + results.toString());
   } catch (err) {
     console.error(err);
     return res.send("Error " + err);
