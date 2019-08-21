@@ -22,7 +22,7 @@ routes.post("/createTable", async (req, res) => {
   });
   const query = `CREATE TABLE ${table_name} (
     ${allColumns}
-  );`
+  );`;
   try {
     const client = await pool.connect()
     const result = await client.query(query);
