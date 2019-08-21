@@ -18,7 +18,7 @@ app.post("/test", async (req, res) => {
     const result = await client.query('SELECT NOW();');
     results = { 'results': (result) ? result.rows : null};
     client.release();
-    return res.send("results: " + results.toString());
+    return res.send("results: " + JSON.stringify(results));
   } catch (err) {
     console.error(err);
     return res.send("Error " + err);
