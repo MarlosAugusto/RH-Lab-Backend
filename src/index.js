@@ -14,5 +14,6 @@ app.use(function (req, res, next) {
 });
 
 app.use(require("./routes"));
+app.use(require("./db/users"));
 
 app.listen(process.env.PORT || 3000);

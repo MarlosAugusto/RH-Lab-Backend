@@ -25,6 +25,4 @@ routes.post("/test", async (req, res) => {
   }
 })
 
-routes.use(require("./db/users"))
-
 module.exports = routes;

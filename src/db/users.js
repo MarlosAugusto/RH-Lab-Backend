@@ -27,3 +27,5 @@ routes.post("users/auth", async (req, res) => {
     return res.send("Error " + err);
   }
 })
+
+module.exports = routes;
