@@ -1,5 +1,8 @@
 const express = require('express')
 const { Client } = require('pg');
+const dotenv = require('dotenv')
+
+dotenv.config()
 
 const app = express()
 
@@ -11,14 +14,15 @@ const client = new Client({
 client.connect();
 
 app.post("/test", (req, res) => {
+  console.log('url',process.env.DATABASE_URL)
   console.log('teste')
-  // client.query('SELECT table_schema,table_name FROM information_schema.tables;', (err, res) => {
-  //   if (err) throw err;
-  //   for (let row of res.rows) {
-  //     console.log(JSON.stringify(row));
-  //   }
-  //   client.end();
-  // });
+  client.query('SELECT now();', (err, res) => {
+    if (err) throw err;
+    for (let row of res.rows) {
+      console.log(JSON.stringify(row));
+    }
+    client.end();
+  });
   
   return res.json({ hello: "World" })
 })
