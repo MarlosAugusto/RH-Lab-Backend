@@ -13,17 +13,16 @@ const pool = new Pool({
 
 app.post("/test", async (req, res) => {
   console.log('url',process.env.DATABASE_URL)
+  let results;
   try {
     const client = await pool.connect()
     const result = await client.query('SELECT NOW();');
-    const results = { 'results': (result) ? result.rows : null};
-    res.render('pages/db', results );
+    results = { 'results': (result) ? result.rows : null};
     client.release();
+    return res.send("results: " + results);
   } catch (err) {
     console.error(err);
-    res.send("Error " + err);
-  }
-  
-  return res.json({ hello: "World" })
+    return res.send("Error " + err);
+  }  
 })
 app.listen(process.env.PORT || 3000)
