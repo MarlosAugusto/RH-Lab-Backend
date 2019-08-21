@@ -12,7 +12,7 @@ const pool = new Pool({
 const app = express()
 
 app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "https://rh-lab-frontend.marlosaugusto.now.sh/"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "https://rh-lab-frontend.marlosaugusto.now.sh"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
   next();
 });
