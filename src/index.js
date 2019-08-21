@@ -13,7 +13,8 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use(require("./routes"));
-app.use(require("./db/users"));
+app.use("/", require("./routes"));
+app.use("/users", require("./db/users"));
+app.use("/services", require("./db/services"));
 
 app.listen(process.env.PORT || 3000);
