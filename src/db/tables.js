@@ -1,4 +1,3 @@
-
 const routes = require('express').Router();
 const { Pool } = require('pg');
 
@@ -7,7 +6,7 @@ const pool = new Pool({
   ssl: true
 });
 
-// criação das tabelas passando o nome da tabela e as colunas :
+// criação das tabelas, passando o nome da tabela e as colunas :
   // "table_name": "users",
 	// "columns": [
 	// 	"id SERIAL PRIMARY KEY",
@@ -51,5 +50,6 @@ routes.delete("/:name", async (req, res) => {
     console.error(err);
     return res.send("Error " + err);
   }
-} )
+})
+
 module.exports = routes;

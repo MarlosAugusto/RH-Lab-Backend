@@ -13,7 +13,9 @@ app.use(function (req, res, next) {
   next();
 });
 
-app.use("/", require("./routes"));
+app.get("/", (req, res) => {
+  return res.json({ hello: "World" })
+});
 app.use("/users", require("./db/users"));
 app.use("/tables", require("./db/tables"));
 
