@@ -76,8 +76,7 @@ routes.put("/:id", async (req, res) => {
     allColumns ? 
       allColumns += `, ${column} = '${value}'` :
       allColumns += `${column} = '${value}'`
-  });
-  
+  });  
   try {
     const client = await pool.connect()
     await client.query(`UPDATE users SET ${allColumns} WHERE id = ${req.params.id};`);
