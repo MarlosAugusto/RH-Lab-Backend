@@ -14,7 +14,8 @@ app.use((req, res, next) => {
 });
 
 app.get('/', (req, res) => res.json({ hello: 'World' }));
-app.use('/users', require('./db/users'));
-app.use('/tables', require('./db/tables'));
+app.use('/users', require('./services/routes/users'));
+app.use('/tables', require('./services/routes/tables'));
+app.use('/vagas', require('./services/routes/vagas'));
 
 app.listen(process.env.PORT || 3000);
