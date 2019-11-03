@@ -6,7 +6,7 @@ const routes = require('express').Router();
 const db = require('../db');
 
 routes.get('/:id', async (req, res) => {
-  const result = db.find('companys', req.params.id);
+  const result = await db.find('companys', req.params.id);
   return res.send(result);
 });
 
@@ -30,7 +30,7 @@ routes.post('/', async (req, res) => {
   if (!name) { // @TODO realizar este tratamento no front
     return res.send(400, { error: 'Dados incompletos!' });
   }
-  const result = await db.create(`('name'${city ? ', city' : ''}${UF ? ', UF' : ''}${sector ? ', sector' : ''}${phone ? ', phone' : ''}${email ? ', mail' : ''})
+  const result = await db.create(`(name${city ? ', city' : ''}${UF ? ', UF' : ''}${sector ? ', sector' : ''}${phone ? ', phone' : ''}${email ? ', mail' : ''})
   VALUES
   (${`'${name}'`}${city ? `, '${city}'` : ''}${UF ? `, '${UF}'` : ''}${sector ? `, '${sector}'` : ''}${phone ? `, '${phone}'` : ''}${email ? `, '${email}'` : ''})`, 'companys');
   return res.send(result);

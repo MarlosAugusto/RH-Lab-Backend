@@ -10,18 +10,18 @@ routes.post('/auth', async (req, res) => {
   if (!email || !password) { // @TODO realizar este tratamento no front
     return res.send(400, { error: 'Dados incompletos!' });
   }
-  const result = db.findWhere('users', `WHERE email = '${email}' AND password = '${b64.encode(password)}`);
+  const result = await db.findWhere('users', `WHERE email = '${email}' AND password = '${b64.encode(password)}`);
 
   return res.send(result);
 });
 
 routes.get('/:id', async (req, res) => {
-  const result = db.find('users', req.params.id);
+  const result = await db.find('users', req.params.id);
   return res.send(result);
 });
 
 routes.get('/', async (req, res) => {
-  const result = db.findAll('users');
+  const result = await db.findAll('users');
   return res.send(result);
 });
 
@@ -49,9 +49,10 @@ routes.post('/', async (req, res) => {
   if (!type || !name || !email || !CPF || !RG || !password) { // @TODO realizar este tratamento no front
     return res.send(400, { error: 'Dados incompletos!' });
   }
-  const result = db.create(`('type', 'name', 'email', 'CPF', 'RG', 'password'${birthdate ? ', birthdate' : ''}${CEP ? ', CEP' : ''}${city ? ', city' : ''}${UF ? ', UF' : ''}${street ? ', street' : ''}${number ? ', number' : ''}${complement ? ', complement' : ''}${contacts ? ', contacts' : ''}${areas_of_interest ? ', areas_of_interest' : ''}${wage_claim ? ', wage_claim' : ''})
+  const result = await db.create(`(type, name, email, CPF, RG, password${birthdate ? ', birthdate' : ''}${CEP ? ', CEP' : ''}${city ? ', city' : ''}${UF ? ', UF' : ''}${street ? ', street' : ''}${number ? ', number' : ''}${complement ? ', complement' : ''}${contacts ? ', contacts' : ''}${areas_of_interest ? ', areas_of_interest' : ''}${wage_claim ? ', wage_claim' : ''})
   VALUES
   (${`'${type}', '${name}', '${email}'`}, '${CPF}', '${RG}', '${password}'${birthdate ? `, '${birthdate}'` : ''}${CEP ? `, '${CEP}'` : ''}${city ? `, '${city}'` : ''}${UF ? `, '${UF}'` : ''}${street ? `, '${street}'` : ''}${number ? `, '${number}'` : ''}${complement ? `, '${complement}'` : ''}${contacts ? `, '${contacts}'` : ''}${areas_of_interest ? `, '${areas_of_interest}'` : ''}${wage_claim ? `, '${wage_claim}'` : ''})`, 'users');
+  console.log('Users post', result);
   return res.send(result);
 });
 
@@ -64,12 +65,12 @@ routes.put('/:id', async (req, res) => {
       ? allColumns += `, ${column} = '${value}'`
       : allColumns += `${column} = '${value}'`;
   });
-  const result = db.update(allColumns, 'users', req.params.id);
+  const result = await db.update(allColumns, 'users', req.params.id);
   return res.send(result);
 });
 
 routes.delete('/:id', async (req, res) => {
-  const result = db.destroy('users', req.params.id);
+  const result = await db.destroy('users', req.params.id);
   return res.send(result);
 });
 
