@@ -8,7 +8,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'https://rh-lab-frontend.marlosaugusto.now.sh'); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Origin', 'https://rh-lab-frontend.marlosaugusto.now.sh, https://rh-lab-frontend-git-develop.marlosaugusto.now.sh, localhost:3000, http://localhost:3000'); // update to match the domain you will make the request from
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
