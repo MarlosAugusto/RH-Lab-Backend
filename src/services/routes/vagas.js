@@ -33,7 +33,7 @@ routes.post('/', async (req, res) => {
   const result = await db.create(`(title, description, company${nv_exp ? ', nv_exp' : ''}${sector ? ', sector' : ''}${type ? ', type' : ''})
   VALUES
   (${`'${title}', '${description}', '${company}'`}${nv_exp ? `, '${nv_exp}'` : ''}${sector ? `, '${sector}'` : ''}${type ? `, '${type}'` : ''})`, 'vagas');
-  console.log('Vagas post', result);
+  // console.log('Vagas post', result);
   return res.send(result);
 });
 
