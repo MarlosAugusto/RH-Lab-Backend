@@ -17,14 +17,23 @@ routes.get('/', async (req, res) => {
 });
 
 routes.post('/', async (req, res) => {
+  // "id SERIAL PRIMARY KEY",
+  // "title VARCHAR(50) NOT NULL",
+  // "description VARCHAR(300) NOT NULL",
+  // "company INTEGER REFERENCES companys(id)",
+  // "nv_exp VARCHAR(25)",
+  // "sector VARCHAR(50)",
+  // "type VARCHAR(50)"
   const {
-    quantidade, nome, descricao
+    title, description, company, nv_exp, sector, type
   } = req.body;
-  if (!quantidade || !nome || !descricao) { // @TODO realizar este tratamento no front
+  if (!title || !description || !company) { // @TODO realizar este tratamento no front
     return res.send(400, { error: 'Dados incompletos!' });
   }
-  const result = await db.create(`(quantidade, nome, descricao) VALUES ('${quantidade}', '${nome}', '${descricao}')`, 'vagas');
-  console.log('Vagas post', result);
+  const result = await db.create(`('title', 'description', 'company'${nv_exp ? ', nv_exp' : ''}${sector ? ', sector' : ''}${type ? ', type' : ''})
+  VALUES
+  (${`'${title}', '${description}', '${company}'`}${nv_exp ? `, '${nv_exp}'` : ''}${sector ? `, '${sector}'` : ''}${type ? `, '${type}'` : ''})`, 'vagas');
+  // console.log('Vagas post', result);
   return res.send(result);
 });
 
