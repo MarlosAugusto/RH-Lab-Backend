@@ -6,7 +6,7 @@ const routes = require('express').Router();
 const db = require('../db');
 
 routes.get('/:id', async (req, res) => {
-  const result = db.find('vagas', req.params.id);
+  const result = await db.find('vagas', req.params.id);
   return res.send(result);
 });
 
@@ -30,10 +30,10 @@ routes.post('/', async (req, res) => {
   if (!title || !description || !company) { // @TODO realizar este tratamento no front
     return res.send(400, { error: 'Dados incompletos!' });
   }
-  const result = await db.create(`('title', 'description', 'company'${nv_exp ? ', nv_exp' : ''}${sector ? ', sector' : ''}${type ? ', type' : ''})
+  const result = await db.create(`(title, description, company${nv_exp ? ', nv_exp' : ''}${sector ? ', sector' : ''}${type ? ', type' : ''})
   VALUES
   (${`'${title}', '${description}', '${company}'`}${nv_exp ? `, '${nv_exp}'` : ''}${sector ? `, '${sector}'` : ''}${type ? `, '${type}'` : ''})`, 'vagas');
-  // console.log('Vagas post', result);
+  console.log('Vagas post', result);
   return res.send(result);
 });
 
