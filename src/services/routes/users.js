@@ -52,7 +52,7 @@ routes.post('/', async (req, res) => {
   const result = await db.create(`(type, name, email, CPF, RG, password${birthdate ? ', birthdate' : ''}${CEP ? ', CEP' : ''}${city ? ', city' : ''}${UF ? ', UF' : ''}${street ? ', street' : ''}${number ? ', number' : ''}${complement ? ', complement' : ''}${contacts ? ', contacts' : ''}${areas_of_interest ? ', areas_of_interest' : ''}${wage_claim ? ', wage_claim' : ''})
   VALUES
   (${`'${type}', '${name}', '${email}'`}, '${CPF}', '${RG}', '${password}'${birthdate ? `, '${birthdate}'` : ''}${CEP ? `, '${CEP}'` : ''}${city ? `, '${city}'` : ''}${UF ? `, '${UF}'` : ''}${street ? `, '${street}'` : ''}${number ? `, '${number}'` : ''}${complement ? `, '${complement}'` : ''}${contacts ? `, '${contacts}'` : ''}${areas_of_interest ? `, '${areas_of_interest}'` : ''}${wage_claim ? `, '${wage_claim}'` : ''})`, 'users');
-  console.log('Users post', result);
+  // console.log('Users post', result);
   return res.send(result);
 });
 
