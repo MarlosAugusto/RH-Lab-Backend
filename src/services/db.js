@@ -12,9 +12,8 @@ const pool = new Pool({
 const findAll = async (table) => {
   try {
     const client = await pool.connect();
-    console.log('client', client);
-    const result = await client.query(`SELECT * FROM ${table};`);
-    console.log(result);
+    const result = await client.query(`SELECT * FROM ${table} ORDER BY id;`);
+    // console.log(result);
     client.release();
     return JSON.stringify(result.rows);
   } catch (err) {
@@ -36,7 +35,7 @@ const find = async (table, id) => {
 const findWhere = async (table, where) => {
   try {
     const client = await pool.connect();
-    const result = await client.query(`SELECT * FROM ${table} ${where};`);
+    const result = await client.query(`SELECT * FROM ${table} ${where} ORDER BY id;`);
     client.release();
     return res.json(result.rows);
   } catch (err) {
@@ -63,7 +62,7 @@ const update = async (data, table, id) => {
     const client = await pool.connect();
     const result = await client.query(`UPDATE ${table} SET ${data} WHERE id = ${id};`);
     client.release();
-    return JSON.stringify(result);
+    return JSON.stringify(result.rows[0]);
   } catch (err) {
     return JSON.stringify(`Error ${err}`);
   }
