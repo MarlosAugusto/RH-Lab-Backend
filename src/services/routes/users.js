@@ -31,7 +31,6 @@ routes.get("/", async (req, res) => {
 
 routes.post("/", async (req, res) => {
   // "id SERIAL PRIMARY KEY",
-  // "type VARCHAR(10) NOT NULL",
   // "name VARCHAR(120) NOT NULL",
   // "email VARCHAR(120) NOT NULL",
   // "CPF VARCHAR(14) NOT NULL UNIQUE",
@@ -48,7 +47,6 @@ routes.post("/", async (req, res) => {
   // "areas_of_interest VARCHAR(200)",
   // "wage_claim DECIMAL(10,2)"
   const {
-    type,
     name,
     email,
     CPF,
@@ -65,27 +63,25 @@ routes.post("/", async (req, res) => {
     complement,
     contacts,
     areas_of_interest,
-    vacancy_of_interest,
     wage_claim
   } = req.body;
-  if (!type || !name || !email || !CPF || !RG || !password) {
+  if (!name || !email || !CPF || !RG || !password) {
     // @TODO realizar este tratamento no front
     return res.send(400, { error: "Dados incompletos!" });
   }
   const result = await db.create(
-    `(type, name, email, CPF, RG, password${genre ? ", genre" : ""}${
+    `(name, email, CPF, RG, password${genre ? ", genre" : ""}${
       birthdate ? ", birthdate" : ""
     }${CEP ? ", CEP" : ""}${neighborhood ? ", neighborhood" : ""}${
       city ? ", city" : ""
     }${UF ? ", UF" : ""}${street ? ", street" : ""}${number ? ", number" : ""}${
       complement ? ", complement" : ""
     }${contacts ? ", contacts" : ""}${
-      areas_of_interest ? ", areas_of_interest" : ""
-    },${vacancy_of_interest ? ", vacancy_of_interest" : ""}${
+      areas_of_interest ? ", areas_of_interest" : ""}${
       wage_claim ? ", wage_claim" : ""
     })
   VALUES
-  (${`'${type}', '${name}', '${email}'`}, '${CPF}', '${RG}', '${password}'${
+  (${`'${name}', '${email}'`}, '${CPF}', '${RG}', '${password}'${
       genre ? `, '${genre}'` : ""
     }${birthdate ? `, '${birthdate}'` : ""}${CEP ? `, '${CEP}'` : ""}${
       neighborhood ? `, '${neighborhood}'` : ""
@@ -93,8 +89,7 @@ routes.post("/", async (req, res) => {
       street ? `, '${street}'` : ""
     }${number ? `, '${number}'` : ""}${complement ? `, '${complement}'` : ""}${
       contacts ? `, '${contacts}'` : ""
-    }${areas_of_interest ? `, '${areas_of_interest}'` : ""}${
-      vacancy_of_interest ? `, '${vacancy_of_interest}'` : ""
+    }${areas_of_interest ? `, '${areas_of_interest}'` : ""
     }${wage_claim ? `, '${wage_claim}'` : ""})`,
     "users"
   );
