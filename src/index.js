@@ -1,7 +1,21 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const firebase = require('firebase');
 
 dotenv.config();
+
+
+var firebaseConfig = {
+  apiKey: "AIzaSyBMdpGmffgrZSeg1nqliytGGQ99UboYJyQ",
+  authDomain: "rh-lab.firebaseapp.com",
+  databaseURL: "https://rh-lab.firebaseio.com",
+  projectId: "rh-lab",
+  storageBucket: "rh-lab.appspot.com",
+  messagingSenderId: "957446657350",
+  appId: "1:957446657350:web:fae4c45bfc009abf67c147"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
 const app = express();
 app.use(express.json());
