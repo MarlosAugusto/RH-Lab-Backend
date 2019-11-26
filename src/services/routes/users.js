@@ -1,24 +1,22 @@
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-expressions */
-const b64 = require("base-64");
+// const b64 = require("base-64");
 const routes = require("express").Router();
 const db = require("../db");
+// routes.post("/auth", async (req, res) => {
+//   const { email, password } = req.body;
+//   if (!email || !password) {
+//     // @TODO realizar este tratamento no front
+//     return res.send(400, { error: "Dados incompletos!" });
+//   }
+//   const result = await db.findWhere(
+//     "users",
+//     `WHERE email = '${email}' AND password = '${b64.encode(password)}`
+//   );
 
-routes.post("/auth", async (req, res) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
-    // @TODO realizar este tratamento no front
-    return res.send(400, { error: "Dados incompletos!" });
-  }
-  const result = await db.findWhere(
-    "users",
-    `WHERE email = '${email}' AND password = '${b64.encode(password)}`
-  );
-
-  return res.send(result);
-});
-
+//   return res.send(result);
+// });
 routes.get("/:id", async (req, res) => {
   const result = await db.find("users", req.params.id);
   return res.send(result);
@@ -46,67 +44,17 @@ routes.post("/", async (req, res) => {
   // "contacts VARCHAR(500)",
   // "areas_of_interest VARCHAR(200)",
   // "wage_claim DECIMAL(10,2)"
-  const {
-    name,
-    email,
-    CPF,
-    RG,
-    password,
-    genre,
-    birthdate,
-    CEP,
-    city,
-    neighborhood,
-    UF,
-    street,
-    number,
-    complement,
-    contacts,
-    areas_of_interest,
-    wage_claim
-  } = req.body;
-  if (!name || !email || !CPF || !RG || !password) {
-    // @TODO realizar este tratamento no front
+  const body = req.body;
+  if (!body.name || !body.email || !body.CPF || !body.RG || !body.password) {
     return res.send(400, { error: "Dados incompletos!" });
   }
-  const result = await db.create(
-    `(name, email, CPF, RG, password${genre ? ", genre" : ""}${
-      birthdate ? ", birthdate" : ""
-    }${CEP ? ", CEP" : ""}${neighborhood ? ", neighborhood" : ""}${
-      city ? ", city" : ""
-    }${UF ? ", UF" : ""}${street ? ", street" : ""}${number ? ", number" : ""}${
-      complement ? ", complement" : ""
-    }${contacts ? ", contacts" : ""}${
-      areas_of_interest ? ", areas_of_interest" : ""}${
-      wage_claim ? ", wage_claim" : ""
-    })
-  VALUES
-  (${`'${name}', '${email}'`}, '${CPF}', '${RG}', '${password}'${
-      genre ? `, '${genre}'` : ""
-    }${birthdate ? `, '${birthdate}'` : ""}${CEP ? `, '${CEP}'` : ""}${
-      neighborhood ? `, '${neighborhood}'` : ""
-    }${city ? `, '${city}'` : ""}${UF ? `, '${UF}'` : ""}${
-      street ? `, '${street}'` : ""
-    }${number ? `, '${number}'` : ""}${complement ? `, '${complement}'` : ""}${
-      contacts ? `, '${contacts}'` : ""
-    }${areas_of_interest ? `, '${areas_of_interest}'` : ""
-    }${wage_claim ? `, '${wage_claim}'` : ""})`,
-    "users"
-  );
+  const result = await db.create(body, "users");
   // console.log('Users post', result);
   return res.send(result);
 });
 
 routes.put("/:id", async (req, res) => {
-  const { columns } = req.body;
-  let allColumns = "";
-  columns.forEach(({ column, value }) => {
-    // console.log('test', column, value)
-    allColumns
-      ? (allColumns += `, ${column} = '${value}'`)
-      : (allColumns += `${column} = '${value}'`);
-  });
-  const result = await db.update(allColumns, "users", req.params.id);
+  const result = await db.update(req.body, "users", req.params.id);
   return res.send(result);
 });
 
