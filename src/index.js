@@ -4,7 +4,6 @@ const firebase = require('firebase');
 
 dotenv.config();
 
-
 var firebaseConfig = {
   apiKey: "AIzaSyBMdpGmffgrZSeg1nqliytGGQ99UboYJyQ",
   authDomain: "rh-lab.firebaseapp.com",
@@ -30,6 +29,7 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => res.json({ hello: 'World' }));
 app.use('/users', require('./services/routes/users'));
+app.use('/dbquery', require('./services/routes/dbquery'));
 app.use('/tables', require('./services/routes/tables'));
 app.use('/vagas', require('./services/routes/vagas'));
 app.use('/companys', require('./services/routes/companys'));

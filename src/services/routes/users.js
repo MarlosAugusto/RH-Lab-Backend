@@ -72,7 +72,6 @@ routes.post("/", async (req, res) => {
   // "CPF VARCHAR(14) NOT NULL UNIQUE",
   // "RG VARCHAR(12) NOT NULL UNIQUE",
   // "birth_date TIMESTAMP",
-  // "password VARCHAR(50) NOT NULL",
   // "CEP VARCHAR(9)",
   // "city VARCHAR(100)",
   // "UF VARCHAR(2)",
