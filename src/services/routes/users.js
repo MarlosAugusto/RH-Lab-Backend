@@ -1,22 +1,60 @@
+const firebase = require("firebase");
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
 /* eslint-disable no-unused-expressions */
 // const b64 = require("base-64");
 const routes = require("express").Router();
 const db = require("../db");
-// routes.post("/auth", async (req, res) => {
-//   const { email, password } = req.body;
-//   if (!email || !password) {
-//     // @TODO realizar este tratamento no front
-//     return res.send(400, { error: "Dados incompletos!" });
-//   }
-//   const result = await db.findWhere(
-//     "users",
-//     `WHERE email = '${email}' AND password = '${b64.encode(password)}`
-//   );
 
-//   return res.send(result);
-// });
+routes.post("/auth/login", async (req, res) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).send({ error: "Dados incompletos!" })
+  }
+  let success = false;
+  let error = null;
+  await firebase.auth()
+    .signInWithEmailAndPassword(email, password)
+    // .then((result => console.log('result', result)))
+    .then(() => (success = true))
+    .catch(err => (error = err.code));
+  if (error) {
+    return res.status(422).send({ error })
+  }
+  return res.send({ success });
+});
+
+routes.post("/auth/sair", async (req, res) => {
+  let success = false;
+  let error = null;
+  await firebase.auth().signOut()
+    .then(() => (success = true))
+    .catch(err => (error = err.code));
+  if (error) {
+    return res.status(422).send({ error })
+  }
+  return res.send({ success });
+});
+
+routes.post("/auth/cadastro", async (req, res) => {
+  let success = false;
+  let error = null;
+  const { email, password } = req.body;
+  if (!email || !password) {
+    return res.status(400).send({ error: "Dados incompletos!" })
+  }
+  await firebase
+    .auth()
+    .createUserWithEmailAndPassword(email, password)
+    // .then((result => console.log('result', result)))
+    .then(() => (success = true))
+    .catch(err => (error = err.code));
+  if (error) {
+    return res.status(422).send({ error })
+  }
+  return res.send({ success });
+});
+
 routes.get("/:id", async (req, res) => {
   const result = await db.find("users", req.params.id);
   return res.send(result);
@@ -34,7 +72,6 @@ routes.post("/", async (req, res) => {
   // "CPF VARCHAR(14) NOT NULL UNIQUE",
   // "RG VARCHAR(12) NOT NULL UNIQUE",
   // "birth_date TIMESTAMP",
-  // "password VARCHAR(50) NOT NULL",
   // "CEP VARCHAR(9)",
   // "city VARCHAR(100)",
   // "UF VARCHAR(2)",
