@@ -34,5 +34,6 @@ app.use('/tables', require('./services/routes/tables'));
 app.use('/vagas', require('./services/routes/vagas'));
 app.use('/companys', require('./services/routes/companys'));
 app.use('/vacancy_of_interest', require('./services/routes/vacancy_of_interest'));
+app.use('/areas_of_interest', require('./services/routes/areas_of_interest'));
 
 app.listen(process.env.PORT || 3000);
