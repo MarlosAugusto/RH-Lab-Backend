@@ -82,7 +82,7 @@ routes.post("/", async (req, res) => {
   // "areas_of_interest VARCHAR(200)",
   // "wage_claim DECIMAL(10,2)"
   const body = req.body;
-  if (!body.name || !body.email || !body.CPF || !body.RG || !body.password) {
+  if (!body.name || !body.email || !body.CPF || !body.RG) {
     return res.send(400, { error: "Dados incompletos!" });
   }
   const result = await db.create(body, "users");
