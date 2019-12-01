@@ -11,11 +11,13 @@ const pool = new Pool({
 
 routes.post('/', async (req, res) => {
   const query = `${req.body.query}`;
-  console.log("query:", query)
   try {
     const client = await pool.connect();
-    await client.query(query);
+    const result = await client.query(query);
     client.release();
+    if (result.rows[0]) {
+      return res.status(200).json(result.rows)
+    }
     return res.status(200).json({ success: true });
   } catch (err) {
     console.error(err);
