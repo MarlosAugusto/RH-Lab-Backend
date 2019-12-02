@@ -36,7 +36,7 @@ routes.put('/:id', async (req, res) => {
 
 routes.delete('/:id', async (req, res) => {
   const result = await db.destroy('areas_of_interest', req.params.id);
-  return res.send(result);
+  return res.send(result.rows[0]);
 });
 
 module.exports = routes;
