@@ -1,0 +1,1081 @@
+{
+	"info": {
+		"_postman_id": "3fcae81b-7739-4e71-a45b-d647b5ff37e8",
+		"name": "RH Lab",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "/users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/users/2",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"\",\n    \"email\": \"\",\n    \"CPF\": \"\",\n    \"RG\":\"\",\n    \"genre\": \"\",\n    \"birth_date\": \"\",\n    \"CEP\": \"\",\n    \"city\": \"\",\n    \"UF\": \"\",\n    \"street\": \"\",\n    \"number\": \"\",\n    \"complement\": \"\",\n    \"contacts\": \"\",\n    \"areas_of_interest\": \"\",\n    \"wage_claim\": 0.0\n}"
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"\",\n    \"email\": \"\",\n    \"CPF\": \"\",\n    \"RG\":\"\",\n    \"genre\": \"\",\n    \"birth_date\": \"\",\n    \"CEP\": \"\",\n    \"city\": \"\",\n    \"UF\": \"\",\n    \"street\": \"\",\n    \"number\": \"\",\n    \"complement\": \"\",\n    \"contacts\": \"\",\n    \"areas_of_interest\": \"\",\n    \"wage_claim\": 0.0\n}"
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/users/3",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/users/1",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/auth/login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"marlos@teste.com.br\",\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/users/auth/login",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/auth/cadastro",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"marlos@teste.com.br\",\n\t\"password\": \"123456\"\n}"
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/users/auth/cadastro",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"auth",
+								"cadastro"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/users/auth/sair",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/users/auth/sair",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"auth",
+								"sair"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Companys",
+			"item": [
+				{
+					"name": "/companys",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/companys",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"companys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/companys/id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/companys/2",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"companys",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/companys",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"codengage\",\n    \"city\":\"Dois Vizinhos\",\n    \"UF\":\"PR\",\n    \"sector\":\"Software\",\n    \"phone\":\"(46)999887766\",\n    \"email\":\"company@teste.com\"\n}"
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/companys",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"companys"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/companys/id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\":\"codengage\",\n    \"city\":\"Dois Vizinhos\",\n    \"UF\":\"PR\",\n    \"sector\":\"Software\",\n    \"phone\":\"(46)999887766\",\n    \"email\":\"company@teste.com\"\n}"
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/companys/3",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"companys",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/companys/id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/companys/1",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"companys",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Vagas",
+			"item": [
+				{
+					"name": "/vagas",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/vagas",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"vagas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/vagas/id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/vagas/2",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"vagas",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/vagas",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Vaga para desenvolvedor Mobile - Multiplataforma\",\n    \"description\": \"Oportunidade para desenvolvedor mobile Júnior, React-native/Flutter\",\n    \"company\": 1,\n    \"sector\": \"Software\",\n    \"nv-exp\": \"Júnior\",\n    \"type\": \"Estágio\"\n}"
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/vagas",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"vagas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/vagas/id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"Vaga para desenvolvedor Mobile - Multiplataforma\",\n    \"description\": \"Oportunidade para desenvolvedor mobile Júnior, React-native/Flutter\",\n    \"company\": 1,\n    \"sector\": \"Software\",\n    \"nv-exp\": \"Júnior\",\n    \"type\": \"Estágio\"\n}"
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/vagas/3",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"vagas",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/vagas/id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/vagas/",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"vagas",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Areas_of_interest",
+			"item": [
+				{
+					"name": "/areas_of_interest",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/areas_of_interest",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"areas_of_interest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/areas_of_interest/id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/areas_of_interest/2",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"areas_of_interest",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/areas_of_interest",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"ti\",\n    \"description\": \"\"\n}"
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/areas_of_interest",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"areas_of_interest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/areas_of_interest/id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"software\",\n    \"description\": \"software\"\n}"
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/areas_of_interest/1",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"areas_of_interest",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/areas_of_interest/id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/areas_of_interest/",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"areas_of_interest",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Vacancy_of_interest",
+			"item": [
+				{
+					"name": "/vacancy_of_interest",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/vacancy_of_interest",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"vacancy_of_interest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/vacancy_of_interest/id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/vacancy_of_interest/2",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"vacancy_of_interest",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/vacancy_of_interest",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_user\": 2,\n    \"id_vaga\": 12\n}"
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/vacancy_of_interest",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"vacancy_of_interest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/vacancy_of_interest/id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id_user\": 1,\n    \"id_vaga\": 1\n}"
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/vacancy_of_interest/3",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"vacancy_of_interest",
+								"3"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/vacancy_of_interest/id",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/vacancy_of_interest/",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"vacancy_of_interest",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Tables",
+			"item": [
+				{
+					"name": "/tables",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"table_name\": \"areas_of_interest\",\n\t\"columns\": [\n\t\t\"id SERIAL PRIMARY KEY\",\n\t\t\"name VARCHAR(25) NOT NULL\",\n\t\t\"description VARCHAR(100)\"\n\t]\n}"
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/tables",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tables"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/tables/name",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "https://rh-lab-backend.herokuapp.com/tables/test",
+							"protocol": "https",
+							"host": [
+								"rh-lab-backend",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"tables",
+								"test"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "/",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rh-lab-backend.herokuapp.com/",
+					"protocol": "https",
+					"host": [
+						"rh-lab-backend",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/dbquery",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"query\": \"SELECT * FROM users WHERE id > 5;\",\n\t\"key\": \"123456\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://rh-lab-backend.herokuapp.com/dbquery",
+					"protocol": "https",
+					"host": [
+						"rh-lab-backend",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"dbquery"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
