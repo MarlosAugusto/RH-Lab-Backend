@@ -10,18 +10,23 @@ const pool = new Pool({
 });
 
 routes.post('/', async (req, res) => {
-  const query = `${req.body.query}`;
-  try {
-    const client = await pool.connect();
-    const result = await client.query(query);
-    client.release();
-    if (result.rows[0]) {
-      return res.status(200).json(result.rows)
+  const query = req.body.query
+  const key = req.body.key
+  if (key === process.env.ACCESSKEY) {
+    try {
+      const client = await pool.connect();
+      const result = await client.query(query);
+      client.release();
+      if (result.rows[0]) {
+        return res.status(200).json(result.rows)
+      }
+      return res.status(200).json({ success: true });
+    } catch (err) {
+      console.error(err);
+      return res.send(`Error ${err}`);
     }
-    return res.status(200).json({ success: true });
-  } catch (err) {
-    console.error(err);
-    return res.send(`Error ${err}`);
+  } else {
+    return res.status(401).json({ Error: 'Você não possui autorização para realizar a operação.' });
   }
 });
 
